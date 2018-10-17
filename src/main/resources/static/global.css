@@ -1,0 +1,41 @@
+body
+{
+    background: #1f1f1f;
+    color: #fff;
+}
+
+/*
+For the sticky footer
+*/
+
+.sticky-footer-body
+{
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    margin: 0;
+}
+
+.sticky-footer-section
+{
+    flex: 1;
+    margin: 0;
+}
+
+/*
+End of sticky footer style
+*/
+
+a, a:hover
+{
+    text-decoration: none;
+    color: #fff;
+}
+
+.simple-button, .simple-button:hover
+{
+    border: 3px solid #fff;
+    border-radius: 5px;
+    color: #fff;
+    padding: 5px 10px;
+}
