@@ -2,6 +2,12 @@ body
 {
     background: #1f1f1f;
     color: #fff;
+    font-family: 'Marmelad', sans-serif;
+}
+
+.bgrd
+{
+    background: #1f1f1f;
 }
 
 /*
@@ -38,4 +44,20 @@ a, a:hover
     border-radius: 5px;
     color: #fff;
     padding: 5px 10px;
+}
+
+.padding-cntr
+{
+    padding: 10% 5% 0% 5%;
+}
+
+.invitation
+{
+    font-size: 50px;
+}
+
+.invitation-btn
+{
+    font-size: 20px;
+    padding-top: 3%;
 }

@@ -6,12 +6,30 @@
 </head>
 <body class="sticky-footer-body">
 <section class="sticky-footer-section">
-    <div align="center" style="font-size: 40px">
+    <div class="invitation padding-cntr" align="center">
         Try don't die
+        <div>
+        {{#phrases}}
+            {{.}}<br>
+        {{/phrases}}
+        </div>
+        <div>
+
+        </div>
     </div>
 </section>
-<footer>
-    Night Minesweeper
-</footer>
+<div class="container pb-4">
+    <div class="row">
+        <div class="col" style="border: 1px solid #fff">
+            Count of mines: {{#countOfMines}}{{countOfMines}}{{/countOfMines}}
+        </div>
+        <div class="col" style="border: 1px solid #fff">
+            Move Arrows
+        </div>
+        <div class="col" style="border: 1px solid #fff">
+            Flag Arrows
+        </div>
+    </div>
+</div>
 </body>
 </html>
