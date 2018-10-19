@@ -19,17 +19,37 @@
     </div>
 </section>
 <div class="container pb-4">
+    <form action="/updategame" method="post">
     <div class="row">
-        <div class="col" style="border: 1px solid #fff">
-            Count of mines: {{#countOfMines}}{{countOfMines}}{{/countOfMines}}
-        </div>
-        <div class="col" style="border: 1px solid #fff">
-            Move Arrows
-        </div>
-        <div class="col" style="border: 1px solid #fff">
-            Flag Arrows
-        </div>
+            <input type="hidden" name="x" value="{{#x}}{{x}}{{/x}}">
+            <input type="hidden" name="y" value="{{#y}}{{y}}{{/y}}">
+            <div class="col" style="border: 1px solid #fff">
+                Mines: {{#countOfMines}}{{countOfMines}}{{/countOfMines}}
+            </div>
+            <div class="col" style="border: 1px solid #fff">
+                <table>
+                    <tr>
+                        <th><input type="submit" value="northwest"></th>
+                        <th><input type="submit" value="north"></th>
+                        <th><input type="submit" value="northeast"></th>
+                    </tr>
+                    <tr>
+                        <th><input type="submit" value="west"></th>
+                        <th></th>
+                        <th><input type="submit" value="east"></th>
+                    </tr>
+                    <tr>
+                        <th><input type="submit" value="southwest"></th>
+                        <th><input type="submit" value="south"></th>
+                        <th><input type="submit" value="southeast"></th>
+                    </tr>
+                </table>
+            </div>
+            <div class="col" style="border: 1px solid #fff">
+                Flag Arrows
+            </div>
     </div>
+    </form>
 </div>
 </body>
 </html>

@@ -4,8 +4,8 @@ import com.dzeru.nightminesweeper.dto.GameState;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Locale;
 import java.util.Random;
 
 @Service
@@ -14,7 +14,7 @@ public class StartGameService
     @Autowired
     PhraseService phraseService;
 
-    public GameState start()
+    public GameState start(Locale locale)
     {
         GameState initialGameState = new GameState();
 
@@ -50,12 +50,15 @@ public class StartGameService
             counter--;
         }
 
-        ArrayList<String> phrases = phraseService.createPhrases(field, 0, 0);
+        ArrayList<String> phrases = phraseService.createPhrases(field, 0, 0, locale);
 
         initialGameState.setCountOfMines(countOfMines);
         initialGameState.setField(field);
         initialGameState.setFlags(flags);
         initialGameState.setPhrases(phrases);
+        initialGameState.setX(0);
+        initialGameState.setY(0);
+
         return initialGameState;
     }
 }

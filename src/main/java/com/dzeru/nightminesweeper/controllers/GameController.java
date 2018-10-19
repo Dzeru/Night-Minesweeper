@@ -7,6 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import java.util.Locale;
+
 @Controller
 public class GameController
 {
@@ -14,9 +16,9 @@ public class GameController
     StartGameService startGameService;
 
     @GetMapping("/startgame")
-    public String startGame(Model model)
+    public String startGame(Model model, Locale locale)
     {
-        GameState initialGameState = startGameService.start();
+        GameState initialGameState = startGameService.start(locale);
 
         model.addAttribute("phrases", initialGameState.getPhrases());
         model.addAttribute("countOfMines", initialGameState.getCountOfMines());
