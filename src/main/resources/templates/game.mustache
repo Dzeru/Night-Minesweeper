@@ -19,7 +19,7 @@
     </div>
 </section>
 <div class="container pb-4">
-    <form action="/updategame" method="post">
+    <form action="/gamestep" method="post">
     <div class="row">
             <input type="hidden" name="x" value="{{#x}}{{x}}{{/x}}">
             <input type="hidden" name="y" value="{{#y}}{{y}}{{/y}}">
@@ -29,24 +29,40 @@
             <div class="col" style="border: 1px solid #fff">
                 <table>
                     <tr>
-                        <th><input type="submit" value="northwest"></th>
-                        <th><input type="submit" value="north"></th>
-                        <th><input type="submit" value="northeast"></th>
+                        <th><input type="ratio" name="step" value="northwest"></th>
+                        <th><input type="ratio" name="step" value="north"></th>
+                        <th><input type="ratio" name="step"  value="northeast"></th>
                     </tr>
                     <tr>
-                        <th><input type="submit" value="west"></th>
-                        <th></th>
-                        <th><input type="submit" value="east"></th>
+                        <th><input type="ratio" name="step"  value="west"></th>
+                        <th><input type="submit" value="STEP"></th>
+                        <th><input type="ratio" name="step"  value="east"></th>
                     </tr>
                     <tr>
-                        <th><input type="submit" value="southwest"></th>
-                        <th><input type="submit" value="south"></th>
-                        <th><input type="submit" value="southeast"></th>
+                        <th><input type="ratio" name="step"  value="southwest"></th>
+                        <th><input type="ratio" name="step"  value="south"></th>
+                        <th><input type="ratio" name="step"  value="southeast"></th>
                     </tr>
                 </table>
             </div>
             <div class="col" style="border: 1px solid #fff">
-                Flag Arrows
+                <table>
+                    <tr>
+                        <th><input type="ratio" name="flag" value="northwest"></th>
+                        <th><input type="ratio" name="flag" value="north"></th>
+                        <th><input type="ratio" name="flag"  value="northeast"></th>
+                    </tr>
+                    <tr>
+                        <th><input type="ratio" name="flag"  value="west"></th>
+                        <th><input type="submit" value="FLAG"></th>
+                        <th><input type="ratio" name="flag"  value="east"></th>
+                    </tr>
+                    <tr>
+                        <th><input type="ratio" name="flag"  value="southwest"></th>
+                        <th><input type="ratio" name="flag"  value="south"></th>
+                        <th><input type="ratio" name="flag"  value="southeast"></th>
+                    </tr>
+                </table>
             </div>
     </div>
     </form>
