@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.ArrayList;
 import java.util.Locale;
 
 @Controller
@@ -23,24 +24,38 @@ public class GameController
     {
         GameState initialGameState = startGameService.start(locale);
 
+        model.addAttribute("x", initialGameState.getX());
+        model.addAttribute("y", initialGameState.getY());
+        model.addAttribute("field", initialGameState.listToString(initialGameState.getField()));
+        model.addAttribute("flags", initialGameState.listToString(initialGameState.getFlags()));
         model.addAttribute("phrases", initialGameState.getPhrases());
         model.addAttribute("countOfMines", initialGameState.getCountOfMines());
         return "game";
     }
-/*
+
     @PostMapping("/gamestep")
     public String gameStep(Model model, Locale locale,
                            @RequestParam int x,
                            @RequestParam int y,
                            @RequestParam String step,
-                           @RequestParam String flag)
+                           @RequestParam String flag,
+                           @RequestParam String field,
+                           @RequestParam String flags)
     {
         GameState initialGameState = startGameService.start(locale);
+
+        ArrayList<ArrayList<Boolean>> fie = initialGameState.stringToList(field);
+        ArrayList<ArrayList<Boolean>> fla = initialGameState.stringToList(flags);
+
+        model.addAttribute("x", initialGameState.getX());
+        model.addAttribute("y", initialGameState.getY());
+        model.addAttribute("field", initialGameState.listToString(fie));
+        model.addAttribute("flags", initialGameState.listToString(fla));
         model.addAttribute("phrases", initialGameState.getPhrases());
         model.addAttribute("countOfMines", initialGameState.getCountOfMines());
         return "game";
     }
-*/
+
     @GetMapping("/game")
     public String game(Model model)
     {

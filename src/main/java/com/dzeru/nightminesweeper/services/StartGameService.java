@@ -29,11 +29,17 @@ public class StartGameService
 
         int counter = countOfMines; //Is used in loop
 
+        ArrayList<Integer> lengthOfY = new ArrayList<>();
+
         for(int x = 0; x < lengthOfSide; x++)
         {
             field.add(new ArrayList<>());
             flags.add(new ArrayList<>());
-            for(int y = 0; y < lengthOfSide; y++)
+
+            int len = countOfMines + random.nextInt(10);
+            lengthOfY.add(len);
+
+            for(int y = 0; y < len; y++)
             {
                 field.get(x).add(false);
                 flags.get(x).add(false);
@@ -43,7 +49,7 @@ public class StartGameService
         while(counter > 0)
         {
             int x = random.nextInt(lengthOfSide);
-            int y = random.nextInt(lengthOfSide);
+            int y = random.nextInt(lengthOfY.get(x));
 
             if(counter > 0 && !field.get(x).get(y))
                 field.get(x).set(y, true);
