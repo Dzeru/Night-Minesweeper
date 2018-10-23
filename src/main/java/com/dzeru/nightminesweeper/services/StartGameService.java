@@ -31,7 +31,7 @@ public class StartGameService
 
         ArrayList<Integer> lengthOfY = new ArrayList<>();
 
-        for(int x = 0; x < lengthOfSide; x++)
+        for(int y = 0; y < lengthOfSide; y++)
         {
             field.add(new ArrayList<>());
             flags.add(new ArrayList<>());
@@ -39,24 +39,24 @@ public class StartGameService
             int len = countOfMines + random.nextInt(10);
             lengthOfY.add(len);
 
-            for(int y = 0; y < len; y++)
+            for(int x = 0; x < len; x++)
             {
-                field.get(x).add(false);
-                flags.get(x).add(false);
+                field.get(y).add(false);
+                flags.get(y).add(false);
             }
         }
 
         while(counter > 0)
         {
-            int x = random.nextInt(lengthOfSide);
-            int y = random.nextInt(lengthOfY.get(x));
+            int y = random.nextInt(lengthOfSide);
+            int x = random.nextInt(lengthOfY.get(y));
 
-            if(counter > 0 && !field.get(x).get(y))
-                field.get(x).set(y, true);
+            if(counter > 0 && !field.get(y).get(x))
+                field.get(y).set(x, true);
             counter--;
         }
 
-        ArrayList<String> phrases = phraseService.createPhrases(field, 0, 0, locale);
+        ArrayList<String> phrases = phraseService.createPhrases(field, 0, 0, 0, locale);
 
         initialGameState.setCountOfMines(countOfMines);
         initialGameState.setField(field);
@@ -64,6 +64,7 @@ public class StartGameService
         initialGameState.setPhrases(phrases);
         initialGameState.setX(0);
         initialGameState.setY(0);
+        initialGameState.setMinesNear(0);
 
         return initialGameState;
     }

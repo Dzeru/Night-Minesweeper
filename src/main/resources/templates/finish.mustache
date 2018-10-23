@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:=http://www.w3.org/1999/xhtml>
+<head>
+    {{> meta}}
+    <title>Night Minesweeper</title>
+</head>
+<body class="sticky-footer-body">
+<nav class="navbar navbar-expand-md pt-3 pl-4">
+    <ul class="navbar-nav mr-auto">
+        <li class="nav-item dropdown">
+            <a class="nav-item dropdown-toggle" href="#" data-toggle="dropdown">Lang</a>
+            <ul class="dropdown-menu bgrd">
+                <li><a class="nav-item nav-link link-white" href="?lang=en">English</a></li>
+                <li><a class="nav-item nav-link link-white" href="?lang=ru">Russian</a></li>
+            </ul>
+        </li>
+    </ul>
+</nav>
+<section class="sticky-footer-section">
+    <div class="invitation padding-cntr" align="center">
+        {{#fail}}KABOOOOM<br>You died :({{/fail}}
+        <div class="invitation-btn" align="center">
+            <a class="simple-button" href="/startgame">Start again</a>
+        </div>
+    </div>
+</section>
+<footer class="pb-3 pl-4">
+    Night Minesweeper, 2018
+</footer>
+</body>
+</html>
