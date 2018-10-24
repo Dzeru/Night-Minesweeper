@@ -26,24 +26,24 @@
             <input type="hidden" name="field" value="{{#field}}{{field}}{{/field}}">
             <input type="hidden" name="flags" value="{{#flags}}{{flags}}{{/flags}}">
             <div class="col" style="border: 1px solid #fff">
-                Mines: <input type="text" name="countOfMines" value="{{#countOfMines}}{{countOfMines}}{{/countOfMines}}">
+                <img src="/images/bomb.png" alt="Mines: "> <input type="text" name="countOfMines" value="{{#countOfMines}}{{countOfMines}}{{/countOfMines}}">
             </div>
             <div class="col" style="border: 1px solid #fff">
-                <table>
+                <table align="center">
                     <tr>
-                        <th><input type="radio" name="step" checked value="northwest"></th>
-                        <th><input type="radio" name="step" value="north"></th>
-                        <th><input type="radio" name="step"  value="northeast"></th>
+                        <th><input type="submit" name="step" value="northwest"></th>
+                        <th><input type="submit" name="step" value="north"></th>
+                        <th><input type="submit" name="step" value="northeast"></th>
                     </tr>
                     <tr>
-                        <th><input type="radio" name="step"  value="west"></th>
-                        <th><input type="submit" value="STEP"></th>
-                        <th><input type="radio" name="step"  value="east"></th>
+                        <th><input type="submit" name="step" value="west"></th>
+                        <th><input type="text" value="STEPS"></th>
+                        <th><input type="submit" name="step" value="east"></th>
                     </tr>
                     <tr>
-                        <th><input type="radio" name="step"  value="southwest"></th>
-                        <th><input type="radio" name="step"  value="south"></th>
-                        <th><input type="radio" name="step"  value="southeast"></th>
+                        <th><input type="submit" name="step" value="southwest"></th>
+                        <th><input type="submit" name="step" value="south"></th>
+                        <th><input type="submit" name="step" value="southeast"></th>
                     </tr>
                 </table>
             </div>

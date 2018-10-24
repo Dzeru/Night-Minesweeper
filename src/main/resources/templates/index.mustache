@@ -5,22 +5,12 @@
     <title>Night Minesweeper</title>
 </head>
 <body class="sticky-footer-body">
-<nav class="navbar navbar-expand-md pt-3 pl-4">
-    <ul class="navbar-nav mr-auto">
-        <li class="nav-item dropdown">
-            <a class="nav-item dropdown-toggle" href="#" data-toggle="dropdown">Lang</a>
-            <ul class="dropdown-menu bgrd">
-                <li><a class="nav-item nav-link link-white" href="?lang=en">English</a></li>
-                <li><a class="nav-item nav-link link-white" href="?lang=ru">Russian</a></li>
-            </ul>
-        </li>
-    </ul>
-</nav>
+{{> nav}}
 <section class="sticky-footer-section">
         <div class="invitation padding-cntr" align="center">
-            You're a minesweeper. No light, no map. Absolute darkness. Your dance with death begins.
+            {{#i18n}}promo{{/i18n}}
             <div class="invitation-btn" align="center">
-                <a class="simple-button" href="/startgame">Start</a>
+                <a class="simple-button" href="/startgame">{{#i18n}}btn.start{{/i18n}}</a>
             </div>
         </div>
 </section>

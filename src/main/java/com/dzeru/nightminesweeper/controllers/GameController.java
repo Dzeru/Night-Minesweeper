@@ -59,6 +59,11 @@ public class GameController
             model.addAttribute("fail", true);
             return "finish";
         }
+        if(gameState.getCountOfMines() == 0)
+        {
+            model.addAttribute("win", true);
+            return "finish";
+        }
 
         model.addAttribute("x", gameState.getX());
         model.addAttribute("y", gameState.getY());
