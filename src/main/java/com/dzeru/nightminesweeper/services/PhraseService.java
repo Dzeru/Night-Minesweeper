@@ -13,7 +13,7 @@ public class PhraseService
     @Autowired
     MessageSource messageSource;
 
-    public ArrayList<String> createPhrases(ArrayList<ArrayList<Boolean>> field, int minesNear, int x, int y, Locale locale)
+    public ArrayList<String> createPhrases(ArrayList<ArrayList<Boolean>> field, int minesNearby, int x, int y, Locale locale)
     {
         ArrayList<String> phrases = new ArrayList<>();
 
@@ -26,6 +26,7 @@ public class PhraseService
         String west = messageSource.getMessage("dir.west", loc, locale);
 
         String possibleMines = messageSource.getMessage("phrase.possibleMines", loc, locale);
+        String noMinesNearby = messageSource.getMessage("phrase.noMinesNearby", loc, locale);
 
         if(x == 0)
             phrases.add(noWay + west);
@@ -36,8 +37,10 @@ public class PhraseService
         if(y == field.size() - 1)
             phrases.add(noWay + south);
 
-        if(minesNear > 0)
-            phrases.add(minesNear + " " + possibleMines);
+        if(minesNearby > 0)
+            phrases.add(minesNearby + " " + possibleMines);
+        else
+            phrases.add(noMinesNearby);
 
         return phrases;
     }

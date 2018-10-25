@@ -64,7 +64,7 @@ public class StartGameService
         initialGameState.setPhrases(phrases);
         initialGameState.setX(0);
         initialGameState.setY(0);
-        initialGameState.setMinesNear(0);
+        initialGameState.setMinesNearby(0);
 
         return initialGameState;
     }

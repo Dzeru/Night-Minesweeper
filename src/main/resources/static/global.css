@@ -61,3 +61,15 @@ a, a:hover
     font-size: 20px;
     padding-top: 3%;
 }
+
+.no-border
+{
+    border-width: 0px;
+}
+
+input[type = text]
+{
+    background: #1f1f1f;
+    color: #fff;
+    border-width: 0px;
+}

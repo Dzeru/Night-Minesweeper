@@ -8,7 +8,7 @@ public class GameState
     private ArrayList<ArrayList<Boolean>> field;
     private ArrayList<ArrayList<Boolean>> flags;
     private int countOfMines;
-    private int minesNear;
+    private int minesNearby;
     private int x;
     private int y;
 
@@ -52,14 +52,14 @@ public class GameState
         this.countOfMines = countOfMines;
     }
 
-    public int getMinesNear()
+    public int getMinesNearby()
     {
-        return minesNear;
+        return minesNearby;
     }
 
-    public void setMinesNear(int minesNear)
+    public void setMinesNearby(int minesNearby)
     {
-        this.minesNear = minesNear;
+        this.minesNearby = minesNearby;
     }
 
     public int getX()

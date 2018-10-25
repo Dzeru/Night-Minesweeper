@@ -163,24 +163,26 @@ public class GameStepService
             left = -1;
         if(x < field.get(y).size() - 1)
             right = 1;
-        if(y > 0)
+        if(y > 1)
             top = 1;
-        if(y < field.size() - 1)
+        if(y < field.size() - 2 && y > 1)
             bottom = -1;
 
-        int minesNear = 0;
+        int minesNearby = 0;
 
-        for(int i = x + left; i < x + right; i++)
-            for(int k = y + bottom; k < y + top; k++)
-                if(flags.get(y).get(x))
-                    minesNear++;
+        for(int i = x + left; i <= x + right; i++)
+            for(int k = y + bottom; k <= y + top; k++)
+            {
+                if(field.get(k).get(i))
+                    minesNearby++;
+            }
 
-        ArrayList<String> phrases = phraseService.createPhrases(field, minesNear, x, y, locale);
+        ArrayList<String> phrases = phraseService.createPhrases(field, minesNearby, x, y, locale);
 
         gm.setField(field);
         gm.setFlags(flags);
         gm.setCountOfMines(countOfMines);
-        gm.setMinesNear(minesNear);
+        gm.setMinesNearby(minesNearby);
         gm.setX(x);
         gm.setY(y);
         gm.setPhrases(phrases);
