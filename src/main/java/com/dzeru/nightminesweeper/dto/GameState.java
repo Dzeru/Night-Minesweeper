@@ -9,8 +9,8 @@ public class GameState
     private ArrayList<ArrayList<Boolean>> flags;
     private int countOfMines;
     private int minesNearby;
-    private int x;
-    private int y;
+    private int horizontal;
+    private int vertical;
 
     public ArrayList<String> getPhrases()
     {
@@ -62,23 +62,23 @@ public class GameState
         this.minesNearby = minesNearby;
     }
 
-    public int getX()
+    public int getHorizontal()
     {
-        return x;
+        return horizontal;
     }
 
-    public void setX(int x)
+    public void setHorizontal(int horizontal)
     {
-        this.x = x;
+        this.horizontal = horizontal;
     }
 
-    public int getY()
+    public int getVertical()
     {
-        return y;
+        return vertical;
     }
 
-    public void setY(int y)
+    public void setVertical(int vertical)
     {
-        this.y = y;
+        this.vertical = vertical;
     }
 }

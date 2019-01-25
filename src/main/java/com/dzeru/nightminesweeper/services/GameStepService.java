@@ -1,6 +1,7 @@
 package com.dzeru.nightminesweeper.services;
 
 import com.dzeru.nightminesweeper.dto.GameState;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,139 +14,150 @@ public class GameStepService
     @Autowired
     PhraseService phraseService;
 
-    public GameState gameStep(Locale locale, int x, int y, String step, String flag, int countOfMines,
+    public GameState gameStep(Locale locale, int horizontal, int vertical, String step, String flag, int countOfMines,
                               ArrayList<ArrayList<Boolean>> field, ArrayList<ArrayList<Boolean>> flags)
     {
         GameState gm = new GameState();
 
-        int xx = x;
-        int yy = y;
+        int hor = horizontal;
+        int ver = vertical;
 
+        //Make a step, change the coordinates
         switch(step)
         {
             case "northwest":
-                if(x > 0)
-                    x = x - 1;
-                if(y > 0)
-                    y = y - 1;
+                if(vertical > 0)
+                    vertical = vertical - 1;
+                if(horizontal > 0)
+                    horizontal = horizontal - 1;
                 break;
             case "north":
-                if(y > 0)
-                    y = y - 1;
+                if(vertical > 0)
+                    vertical = vertical - 1;
                 break;
             case "northeast":
-                if(x < field.get(y).size() - 1)
-                    x = x + 1;
-                if(y > 0)
-                    y = y - 1;
+                if(vertical > 0)
+                    vertical = vertical - 1;
+                if(horizontal < field.get(vertical).size() - 1)
+                    horizontal = horizontal + 1;
+                else
+                    horizontal = field.get(vertical).size() - 1;
                 break;
             case "east":
-                if(x < field.get(y).size() - 1)
-                    x = x + 1;
+                if(horizontal < field.get(vertical).size() - 1)
+                    horizontal = horizontal + 1;
+                else
+                    horizontal = field.get(vertical).size() - 1;
                 break;
             case "southeast":
-                if(x < field.get(y).size() - 1)
-                    x = x + 1;
-                if(y < field.size() - 1)
-                    y = y + 1;
+                if(vertical < field.size() - 1)
+                    vertical = vertical + 1;
+                if(horizontal < field.get(vertical).size() - 1)
+                    horizontal = horizontal + 1;
+                else
+                    horizontal = field.get(vertical).size() - 1;
                 break;
             case "south":
-                if(y < field.size() - 1)
-                    y = y + 1;
+                if(vertical < field.size() - 1)
+                    vertical = vertical + 1;
                 break;
             case "southwest":
-                if(x > 0)
-                    x = x - 1;
-                if(y < field.size() - 1)
-                    y = y + 1;
+                if(vertical < field.size() - 1)
+                    vertical = vertical + 1;
+                if(horizontal > 0)
+                    horizontal = horizontal - 1;
                 break;
             case "west":
-                if(x > 1)
-                    x = x - 1;
+                if(horizontal > 0)
+                    horizontal = horizontal - 1;
                 break;
             default: break;
         }
 
-        if(field.get(y).get(x))
+        System.out.println("Current field verts: " + field.size() + ", cells: " + field.get(vertical).size());
+        System.out.println("Current vert: " + vertical + ", hor: " + horizontal);
+
+        if(field.get(vertical).get(horizontal))
         {
             //minesweeper died
             gm.setCountOfMines(-1);
             return gm;
         }
 
+        //Check marked mines with coordinates BEFORE step
         if(flag != null)
         {
             switch(flag)
             {
                 case "northwest":
-                    if(xx > 1 && yy > 1)
-                        if(field.get(yy - 1).get(xx - 1))
+                    if(hor > 0 && ver > 0)
+                        if(field.get(ver - 1).get(hor - 1))
                         {
-                            field.get(yy - 1).set(xx - 1, false);
-                            flags.get(yy - 1).set(xx - 1, true);
+                            field.get(ver - 1).set(hor - 1, false);
+                            flags.get(ver - 1).set(hor - 1, true);
                             countOfMines--;
                         }
                     break;
                 case "north":
-                    if(yy > 1)
-                        if(field.get(yy - 1).get(xx))
+                    if(ver > 0)
+                        if(field.get(ver - 1).get(hor))
                         {
-                            field.get(yy - 1).set(xx, false);
-                            flags.get(yy - 1).set(xx, true);
+                            field.get(ver - 1).set(hor, false);
+                            flags.get(ver - 1).set(hor, true);
                             countOfMines--;
                         }
                     break;
                 case "northeast":
-                    if(xx < field.get(yy).size() - 1 && yy > 1)
-                        if(field.get(yy - 1).get(xx + 1))
+                    if(hor < field.get(ver).size() - 1 && ver > 0)
+                        if(field.get(ver - 1).get(hor + 1))
                         {
-                            field.get(yy - 1).set(xx + 1, false);
-                            flags.get(yy - 1).set(xx + 1, true);
+                            field.get(ver - 1).set(hor + 1, false);
+                            flags.get(ver - 1).set(hor + 1, true);
                             countOfMines--;
                         }
                     break;
                 case "east":
-                    if(xx < field.get(yy).size() - 1)
-                        if(field.get(yy).get(xx + 1))
+                    if(hor < field.get(ver).size() - 1)
+                        if(field.get(ver).get(hor + 1))
                         {
-                            field.get(yy).set(xx + 1, false);
-                            flags.get(yy).set(xx + 1, true);
+                            field.get(ver).set(hor + 1, false);
+                            flags.get(ver).set(hor + 1, true);
                             countOfMines--;
                         }
                     break;
                 case "southeast":
-                    if(xx < field.get(yy).size() - 1 && yy < field.size() - 1)
-                        if(field.get(yy + 1).get(xx + 1))
+                    if(hor < field.get(ver).size() - 1 && ver < field.size() - 1)
+                        if(field.get(ver + 1).get(hor + 1))
                         {
-                            field.get(yy + 1).set(xx + 1, false);
-                            flags.get(yy + 1).set(xx + 1, true);
+                            field.get(ver + 1).set(hor + 1, false);
+                            flags.get(ver + 1).set(hor + 1, true);
                             countOfMines--;
                         }
                     break;
                 case "south":
-                    if(yy < field.size() - 1)
-                        if(field.get(yy + 1).get(xx))
+                    if(ver < field.size() - 1)
+                        if(field.get(ver + 1).get(hor))
                         {
-                            field.get(yy + 1).set(xx, false);
-                            flags.get(yy + 1).set(xx, true);
+                            field.get(ver + 1).set(hor, false);
+                            flags.get(ver + 1).set(hor, true);
                             countOfMines--;
                         }
                     break;
                 case "southwest":
-                    if(xx > 1 && yy < field.size() - 1)
-                        if(field.get(yy + 1).get(xx - 1))
+                    if(hor > 0 && ver < field.size() - 1)
+                        if(field.get(ver + 1).get(hor - 1))
                         {
-                            field.get(yy + 1).set(xx - 1, false);
-                            flags.get(yy + 1).set(xx - 1, true);
+                            field.get(ver + 1).set(hor - 1, false);
+                            flags.get(ver + 1).set(hor - 1, true);
                             countOfMines--;
                         }
                     break;
                 case "west":
-                    if(xx > 1)
-                        if(field.get(yy).get(xx - 1))
+                    if(hor > 0)
+                        if(field.get(ver).get(hor - 1))
                         {
-                            field.get(yy).set(xx - 1, false);
-                            flags.get(yy).set(xx - 1, true);
+                            field.get(ver).set(hor - 1, false);
+                            flags.get(ver).set(hor - 1, true);
                             countOfMines--;
                         }
                     break;
@@ -159,32 +171,35 @@ public class GameStepService
         int top = 0;
         int bottom = 0;
 
-        if(x > 0)
+        if(horizontal > 0)
             left = -1;
-        if(x < field.get(y).size() - 1)
-            right = 1;
-        if(y > 1)
-            top = 1;
-        if(y < field.size() - 2 && y > 1)
+        if(vertical > 0)
             bottom = -1;
+        if(vertical < field.size() - 1)
+            top = 1;
 
         int minesNearby = 0;
 
-        for(int i = x + left; i <= x + right; i++)
-            for(int k = y + bottom; k <= y + top; k++)
+        for(int i = vertical + bottom; i <= vertical + top; i++)
+        {
+            if(horizontal < field.get(i).size() - 1)
+                right = 1;
+            for(int k = horizontal + left; k <= horizontal + right; k++)
             {
-                if(field.get(k).get(i))
+                if(field.get(i).get(k))
                     minesNearby++;
             }
+            right = 0;
+        }
 
-        ArrayList<String> phrases = phraseService.createPhrases(field, minesNearby, x, y, locale);
+        ArrayList<String> phrases = phraseService.createPhrases(field, minesNearby, horizontal, vertical, locale);
 
         gm.setField(field);
         gm.setFlags(flags);
         gm.setCountOfMines(countOfMines);
         gm.setMinesNearby(minesNearby);
-        gm.setX(x);
-        gm.setY(y);
+        gm.setHorizontal(horizontal);
+        gm.setVertical(vertical);
         gm.setPhrases(phrases);
 
         return gm;

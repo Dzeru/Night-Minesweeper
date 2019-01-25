@@ -22,37 +22,39 @@ public class StartGameService
 
         int countOfMines = random.nextInt(10) + 15;
 
-        int lengthOfSide = countOfMines + random.nextInt(5);
+        //Size of ArrayList<ArrayList<Boolean>>
+        int countOfHorizontalLines = countOfMines + random.nextInt(5);
 
         ArrayList<ArrayList<Boolean>> field = new ArrayList<>();
         ArrayList<ArrayList<Boolean>> flags = new ArrayList<>();
 
         int counter = countOfMines; //Is used in loop
 
-        ArrayList<Integer> lengthOfY = new ArrayList<>();
+        //Size of each ArrayList<Boolean>
+        ArrayList<Integer> lengthsOfHorizontalLines = new ArrayList<>();
 
-        for(int y = 0; y < lengthOfSide; y++)
+        for(int vertical = 0; vertical < countOfHorizontalLines; vertical++)
         {
             field.add(new ArrayList<>());
             flags.add(new ArrayList<>());
 
             int len = countOfMines + random.nextInt(10);
-            lengthOfY.add(len);
+            lengthsOfHorizontalLines.add(len);
 
-            for(int x = 0; x < len; x++)
+            for(int horizontal = 0; horizontal < len; horizontal++)
             {
-                field.get(y).add(false);
-                flags.get(y).add(false);
+                field.get(vertical).add(false);
+                flags.get(vertical).add(false);
             }
         }
 
         while(counter > 0)
         {
-            int y = random.nextInt(lengthOfSide);
-            int x = random.nextInt(lengthOfY.get(y));
+            int vertical = random.nextInt(countOfHorizontalLines);
+            int horizontal = random.nextInt(lengthsOfHorizontalLines.get(vertical));
 
-            if(counter > 0 && !field.get(y).get(x))
-                field.get(y).set(x, true);
+            if(counter > 0 && !field.get(vertical).get(horizontal) && !(horizontal == 0 && vertical == 0))
+                field.get(vertical).set(horizontal, true);
             counter--;
         }
 
@@ -62,8 +64,8 @@ public class StartGameService
         initialGameState.setField(field);
         initialGameState.setFlags(flags);
         initialGameState.setPhrases(phrases);
-        initialGameState.setX(0);
-        initialGameState.setY(0);
+        initialGameState.setHorizontal(0);
+        initialGameState.setVertical(0);
         initialGameState.setMinesNearby(0);
 
         return initialGameState;
