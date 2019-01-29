@@ -31,8 +31,6 @@ public class GameController
     {
         GameState initialGameState = startGameService.start(locale);
 
-        System.out.println("Vertical's: " + initialGameState.getField().size());
-
         model.addAttribute("horizontal", initialGameState.getHorizontal());
         model.addAttribute("vertical", initialGameState.getVertical());
         model.addAttribute("field", convertService.encryptField(initialGameState.getField()));

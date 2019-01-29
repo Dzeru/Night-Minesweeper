@@ -12,7 +12,7 @@ import java.util.Locale;
 public class GameStepService
 {
     @Autowired
-    PhraseService phraseService;
+    private PhraseService phraseService;
 
     public GameState gameStep(Locale locale, int horizontal, int vertical, String step, String flag, int countOfMines,
                               ArrayList<ArrayList<Boolean>> field, ArrayList<ArrayList<Boolean>> flags)
@@ -30,6 +30,8 @@ public class GameStepService
                     vertical = vertical - 1;
                 if(horizontal > 0)
                     horizontal = horizontal - 1;
+                if(horizontal > field.get(vertical).size() - 1)
+                    horizontal = field.get(vertical).size() - 1;
                 break;
             case "north":
                 if(vertical > 0)
@@ -46,8 +48,6 @@ public class GameStepService
             case "east":
                 if(horizontal < field.get(vertical).size() - 1)
                     horizontal = horizontal + 1;
-                else
-                    horizontal = field.get(vertical).size() - 1;
                 break;
             case "southeast":
                 if(vertical < field.size() - 1)
@@ -66,6 +66,8 @@ public class GameStepService
                     vertical = vertical + 1;
                 if(horizontal > 0)
                     horizontal = horizontal - 1;
+                if(horizontal > field.get(vertical).size() - 1)
+                    horizontal = field.get(vertical).size() - 1;
                 break;
             case "west":
                 if(horizontal > 0)
@@ -73,9 +75,6 @@ public class GameStepService
                 break;
             default: break;
         }
-
-        System.out.println("Current field verts: " + field.size() + ", cells: " + field.get(vertical).size());
-        System.out.println("Current vert: " + vertical + ", hor: " + horizontal);
 
         if(field.get(vertical).get(horizontal))
         {
@@ -180,11 +179,15 @@ public class GameStepService
 
         int minesNearby = 0;
 
+        int hrzntl = horizontal; //for loop
+
         for(int i = vertical + bottom; i <= vertical + top; i++)
         {
             if(horizontal < field.get(i).size() - 1)
                 right = 1;
-            for(int k = horizontal + left; k <= horizontal + right; k++)
+            if(horizontal > field.get(i).size() - 1)
+                hrzntl = field.get(i).size() - 1;
+            for(int k = hrzntl + left; k <= hrzntl + right; k++)
             {
                 if(field.get(i).get(k))
                     minesNearby++;
