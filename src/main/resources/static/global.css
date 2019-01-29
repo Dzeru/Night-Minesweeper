@@ -73,3 +73,16 @@ input[type = text]
     color: #fff;
     border-width: 0px;
 }
+
+.input-count-mines
+{
+    font-size: 35px;
+    width: 2em;
+    text-align: center;
+}
+
+.td-square
+{
+    height: 3em;
+    width: 3em;
+}

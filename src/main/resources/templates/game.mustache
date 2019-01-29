@@ -7,98 +7,98 @@
 <body class="sticky-footer-body">
 <section class="sticky-footer-section">
     <div class="invitation padding-cntr" align="center">
-        Try don't die
         <div>
         {{#phrases}}
             {{.}}<br>
         {{/phrases}}
         </div>
-        <div>
-
-        </div>
     </div>
 </section>
 <div class="container pb-4">
     <form action="/gamestep" method="post">
-    <div class="row">
+        <div class="row">
             <input type="hidden" name="horizontal" value="{{#horizontal}}{{horizontal}}{{/horizontal}}">
             <input type="hidden" name="vertical" value="{{#vertical}}{{vertical}}{{/vertical}}">
             <input type="hidden" name="field" value="{{#field}}{{field}}{{/field}}">
             <input type="hidden" name="flags" value="{{#flags}}{{flags}}{{/flags}}">
-            <div class="col" style="border: 1px solid #fff">
-                <img src="/images/mine.png" alt="Mines: "> <input style="font-size: 25px" type="text" readonly name="countOfMines" value="{{#countOfMines}}{{countOfMines}}{{/countOfMines}}">
+            <div class="col">
+                <img src="/images/mine.png" alt="Mines: "> <input class="input-count-mines" type="text" readonly name="countOfMines" value="{{#countOfMines}}{{countOfMines}}{{/countOfMines}}">
             </div>
-            <div class="col" style="border: 1px solid #fff">
+            <div class="col">
                 <table align="center">
-                    <tr>
-                        <th>
-                            <button class="bgrd no-border" type="submit" name="step" value="northwest">
-                                <img src="/images/northwest-arrow.png">
-                            </button>
-                        </th>
-                        <th>
-                            <button class="bgrd no-border" type="submit" name="step" value="north">
-                                <img src="/images/north-arrow.png">
-                            </button>
-                        </th>
-                        <th>
-                            <button class="bgrd no-border" type="submit" name="step" value="northeast">
-                                <img src="/images/northeast-arrow.png">
-                            </button>
-                        </th>
-                    </tr>
-                    <tr>
-                        <th>
-                            <button class="bgrd no-border" type="submit" name="step" value="west">
-                                <img src="/images/west-arrow.png">
-                            </button>
-                        </th>
-                        <th>STEPS</th>
-                        <th>
-                            <button class="bgrd no-border" type="submit" name="step" value="east">
-                                <img src="/images/east-arrow.png">
-                            </button>
-                        </th>
-                    </tr>
-                    <tr>
-                        <th>
-                            <button class="bgrd no-border" type="submit" name="step" value="southwest">
-                                <img src="/images/southwest-arrow.png">
-                            </button>
-                        </th>
-                        <th>
-                            <button class="bgrd no-border" type="submit" name="step" value="south">
-                                <img src="/images/south-arrow.png">
-                            </button>
-                        </th>
-                        <th>
-                            <button class="bgrd no-border" type="submit" name="step" value="southeast">
-                                <img src="/images/southeast-arrow.png">
-                            </button>
-                        </th>
-                    </tr>
+                    <tbody align="center">
+                        <tr>
+                            <td class="td-square">
+                                <button class="bgrd no-border" type="submit" name="step" value="northwest">
+                                    <img src="/images/northwest-arrow.png">
+                                </button>
+                            </td>
+                            <td class="td-square">
+                                <button class="bgrd no-border" type="submit" name="step" value="north">
+                                    <img src="/images/north-arrow.png">
+                                </button>
+                            </td>
+                            <td class="td-square">
+                                <button class="bgrd no-border" type="submit" name="step" value="northeast">
+                                    <img src="/images/northeast-arrow.png">
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="td-square">
+                                <button class="bgrd no-border" type="submit" name="step" value="west">
+                                    <img src="/images/west-arrow.png">
+                                </button>
+                            </td>
+                            <td class="td-square">{{#i18n}}phrase.steps{{/i18n}}</td>
+                            <td class="td-square">
+                                <button class="bgrd no-border" type="submit" name="step" value="east">
+                                    <img src="/images/east-arrow.png">
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="td-square">
+                                <button class="bgrd no-border" type="submit" name="step" value="southwest">
+                                    <img src="/images/southwest-arrow.png">
+                                </button>
+                            </td>
+                            <td class="td-square">
+                                <button class="bgrd no-border" type="submit" name="step" value="south">
+                                    <img src="/images/south-arrow.png">
+                                </button>
+                            </td>
+                            <td class="td-square">
+                                <button class="bgrd no-border" type="submit" name="step" value="southeast">
+                                    <img src="/images/southeast-arrow.png">
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
                 </table>
             </div>
-            <div class="col" style="border: 1px solid #fff">
+            <div class="col">
                 <table align="center">
-                    <tr>
-                        <th><input type="radio" name="flag" value="northwest"></th>
-                        <th><input type="radio" name="flag" value="north"></th>
-                        <th><input type="radio" name="flag" value="northeast"></th>
-                    </tr>
-                    <tr>
-                        <th><input type="radio" name="flag" value="west"></th>
-                        <th><input type="text" value="FLAGS"></th>
-                        <th><input type="radio" name="flag" value="east"></th>
-                    </tr>
-                    <tr>
-                        <th><input type="radio" name="flag" value="southwest"></th>
-                        <th><input type="radio" name="flag" value="south"></th>
-                        <th><input type="radio" name="flag" value="southeast"></th>
-                    </tr>
+                    <tbody align="center">
+                        <tr>
+                            <td class="td-square"><input type="radio" name="flag" value="northwest"></td>
+                            <td class="td-square"><input type="radio" name="flag" value="north"></td>
+                            <td class="td-square"><input type="radio" name="flag" value="northeast"></td>
+                        </tr>
+                        <tr>
+                            <td class="td-square"><input type="radio" name="flag" value="west"></td>
+                            <td class="td-square">{{#i18n}}phrase.flags{{/i18n}}</td>
+                            <td class="td-square"><input type="radio" name="flag" value="east"></td>
+                        </tr>
+                        <tr>
+                            <td class="td-square"><input type="radio" name="flag" value="southwest"></td>
+                            <td class="td-square"><input type="radio" name="flag" value="south"></td>
+                            <td class="td-square"><input type="radio" name="flag" value="southeast"></td>
+                        </tr>
+                    </tbody>
                 </table>
             </div>
-    </div>
+        </div>
     </form>
 </div>
 </body>

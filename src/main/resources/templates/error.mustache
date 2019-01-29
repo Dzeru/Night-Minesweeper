@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:=http://www.w3.org/1999/xhtml>
+<head>
+	{{> meta}}
+	<title>Night Minesweeper</title>
+</head>
+<body class="sticky-footer-body">
+{{> nav}}
+<section class="sticky-footer-section">
+	<div class="invitation padding-cntr" align="center">
+		<h1>{{#error}}{{error}}{{/error}}</h1>
+		<h2>{{#status}}{{status}}{{/status}}</h2>
+		<div class="invitation-btn" align="center">
+			<a class="simple-button" href="/">{{#i18n}}btn.startAgain{{/i18n}}</a>
+		</div>
+	</div>
+</section>
+<footer class="pb-3 pl-4">
+	Night Minesweeper, 2018
+</footer>
+</body>
+</html>
