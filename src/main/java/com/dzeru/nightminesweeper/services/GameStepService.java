@@ -26,31 +26,28 @@ public class GameStepService
         switch(step)
         {
             case "northwest":
-                if(vertical > 0)
+                //size - 1 because list starts with 0, horizontal - 1 because it will be decreased
+                if(vertical > 0 && field.get(vertical - 1).size() - 1 >= horizontal - 1)
                     vertical = vertical - 1;
                 if(horizontal > 0)
                     horizontal = horizontal - 1;
-                if(horizontal > field.get(vertical).size() - 1)
-                    horizontal = field.get(vertical).size() - 1;
                 break;
             case "north":
-                if(vertical > 0)
+                if(vertical > 0 && field.get(vertical - 1).size() - 1 >= horizontal)
                     vertical = vertical - 1;
                 break;
             case "northeast":
-                if(vertical > 0)
+                if(vertical > 0 && field.get(vertical - 1).size() - 1 >= horizontal + 1)
                     vertical = vertical - 1;
                 if(horizontal < field.get(vertical).size() - 1)
                     horizontal = horizontal + 1;
-                else
-                    horizontal = field.get(vertical).size() - 1;
                 break;
             case "east":
                 if(horizontal < field.get(vertical).size() - 1)
                     horizontal = horizontal + 1;
                 break;
             case "southeast":
-                if(vertical < field.size() - 1)
+                if(vertical < field.size() - 1 && field.get(vertical + 1).size() - 1 >= horizontal + 1)
                     vertical = vertical + 1;
                 if(horizontal < field.get(vertical).size() - 1)
                     horizontal = horizontal + 1;
@@ -58,11 +55,11 @@ public class GameStepService
                     horizontal = field.get(vertical).size() - 1;
                 break;
             case "south":
-                if(vertical < field.size() - 1)
+                if(vertical < field.size() - 1 && field.get(vertical + 1).size() - 1 >= horizontal)
                     vertical = vertical + 1;
                 break;
             case "southwest":
-                if(vertical < field.size() - 1)
+                if(vertical < field.size() - 1 && field.get(vertical + 1).size() - 1 >= horizontal - 1)
                     vertical = vertical + 1;
                 if(horizontal > 0)
                     horizontal = horizontal - 1;
@@ -78,7 +75,7 @@ public class GameStepService
 
         if(field.get(vertical).get(horizontal))
         {
-            //minesweeper died
+            //minesweeper die
             gm.setCountOfMines(-1);
             return gm;
         }
@@ -179,15 +176,11 @@ public class GameStepService
 
         int minesNearby = 0;
 
-        int hrzntl = horizontal; //for loop
-
         for(int i = vertical + bottom; i <= vertical + top; i++)
         {
             if(horizontal < field.get(i).size() - 1)
                 right = 1;
-            if(horizontal > field.get(i).size() - 1)
-                hrzntl = field.get(i).size() - 1;
-            for(int k = hrzntl + left; k <= hrzntl + right; k++)
+            for(int k = horizontal + left; k <= horizontal + right && k < field.get(i).size(); k++)
             {
                 if(field.get(i).get(k))
                     minesNearby++;

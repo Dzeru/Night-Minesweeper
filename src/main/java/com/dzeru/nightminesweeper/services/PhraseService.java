@@ -32,9 +32,9 @@ public class PhraseService
             phrases.add(noWay + west);
         if(horizontal == field.get(vertical).size() - 1)
             phrases.add(noWay + east);
-        if(vertical == 0)
+        if(vertical == 0 || horizontal > field.get(vertical - 1).size() - 1)
             phrases.add(noWay + north);
-        if(vertical == field.size() - 1)
+        if(vertical == field.size() - 1 || horizontal > field.get(vertical + 1).size() - 1)
             phrases.add(noWay + south);
 
         if(minesNearby > 0)
