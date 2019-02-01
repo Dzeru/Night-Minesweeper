@@ -17,4 +17,10 @@ public class IndexController
     {
         return "index";
     }
+
+    @GetMapping("/howtoplay")
+    public String howToPlay()
+    {
+        return "howtoplay";
+    }
 }

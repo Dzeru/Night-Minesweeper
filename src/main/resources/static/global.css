@@ -86,3 +86,8 @@ input[type = text]
     height: 3em;
     width: 3em;
 }
+
+.brdr
+{
+    border: 1px solid #fff;
+}

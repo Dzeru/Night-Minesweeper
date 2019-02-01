@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html xmlns:=http://www.w3.org/1999/xhtml>
+<head>
+	{{> meta}}
+	<title>Night Minesweeper</title>
+</head>
+<body class="sticky-footer-body">
+{{> nav}}
+<section class="sticky-footer-section">
+	<div class="px-4 py-4" align="center">
+		<div>{{#i18n}}htp.dirPoint{{/i18n}}</div>
+		<div class="pb-4">
+			<div class="invitation">
+				2&nbsp;{{#i18n}}phrase.possibleMines{{/i18n}}
+			</div>
+			<table align="center">
+				<tbody align="center">
+				<tr>
+					<td class="td-square"><input type="radio" name="flag" value="northwest"></td>
+					<td class="td-square"><input type="radio" name="flag" value="north"></td>
+					<td class="td-square"><input type="radio" name="flag" value="northeast"></td>
+				</tr>
+				<tr>
+					<td class="td-square"><input type="radio" name="flag" value="west"></td>
+					<td class="td-square">{{#i18n}}phrase.flags{{/i18n}}</td>
+					<td class="td-square"><input type="radio" name="flag" value="east"></td>
+				</tr>
+				<tr>
+					<td class="td-square"><input type="radio" name="flag" value="southwest"></td>
+					<td class="td-square"><input type="radio" name="flag" value="south"></td>
+					<td class="td-square"><input type="radio" name="flag" value="southeast"></td>
+				</tr>
+				</tbody>
+			</table>
+		</div>
+		<div>{{#i18n}}htp.arrow{{/i18n}}</div>
+		<div class="pb-4">
+			<table align="center">
+				<tbody align="center">
+				<tr>
+					<td class="td-square"><img src="/images/northwest-arrow.png"></td>
+					<td class="td-square"><img src="/images/north-arrow.png"></td>
+					<td class="td-square"><img src="/images/northeast-arrow.png"></td>
+				</tr>
+				<tr>
+					<td class="td-square"><img src="/images/west-arrow.png"></td>
+					<td class="td-square">{{#i18n}}phrase.steps{{/i18n}}</td>
+					<td class="td-square"><img src="/images/east-arrow.png"></td>
+				</tr>
+				<tr>
+					<td class="td-square"><img src="/images/southwest-arrow.png"></td>
+					<td class="td-square"><img src="/images/south-arrow.png"></td>
+					<td class="td-square"><img src="/images/southeast-arrow.png"></td>
+				</tr>
+				</tbody>
+			</table>
+		</div>
+		<div>{{#i18n}}htp.unavailable{{/i18n}}</div>
+		<div class="pb-4">
+			<div class="invitation">
+				{{#i18n}}phrase.noWay{{/i18n}}{{#i18n}}dir.north{{/i18n}}<br>
+				{{#i18n}}phrase.noWay{{/i18n}}{{#i18n}}dir.south{{/i18n}}<br>
+				{{#i18n}}phrase.noWay{{/i18n}}{{#i18n}}dir.east{{/i18n}}
+			</div>
+			<div>
+				<table align="center">
+					<tbody align="center">
+					<tr>
+						<td class="td-square brdr">.</td>
+						<td class="td-square brdr">.</td>
+					</tr>
+					<tr>
+						<td class="td-square brdr">.</td>
+						<td class="td-square brdr">.</td>
+						<td class="td-square brdr">X</td>
+					</tr>
+					<tr>
+						<td class="td-square brdr">.</td>
+						<td class="td-square brdr">.</td>
+					</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<div>{{#i18n}}htp.explosion{{/i18n}}</div>
+		<div>{{#i18n}}htp.findAll{{/i18n}}</div>
+	</div>
+</section>
+<footer class="pb-3 pl-4">
+	Night Minesweeper, 2018
+</footer>
+</body>
+</html>
