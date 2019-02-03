@@ -86,7 +86,7 @@ public class GameStepService
             switch(flag)
             {
                 case "northwest":
-                    if(hor > 0 && ver > 0)
+                    if(hor > 0 && ver > 0 && field.get(ver - 1).size() - 1 >= hor - 1)
                         if(field.get(ver - 1).get(hor - 1))
                         {
                             field.get(ver - 1).set(hor - 1, false);
@@ -95,7 +95,7 @@ public class GameStepService
                         }
                     break;
                 case "north":
-                    if(ver > 0)
+                    if(ver > 0 && field.get(ver - 1).size() - 1 >= hor)
                         if(field.get(ver - 1).get(hor))
                         {
                             field.get(ver - 1).set(hor, false);
@@ -104,7 +104,7 @@ public class GameStepService
                         }
                     break;
                 case "northeast":
-                    if(hor < field.get(ver).size() - 1 && ver > 0)
+                    if(ver > 0 && field.get(ver - 1).size() - 1 >= hor + 1)
                         if(field.get(ver - 1).get(hor + 1))
                         {
                             field.get(ver - 1).set(hor + 1, false);
@@ -122,7 +122,7 @@ public class GameStepService
                         }
                     break;
                 case "southeast":
-                    if(hor < field.get(ver).size() - 1 && ver < field.size() - 1)
+                    if(ver < field.size() - 1 && field.get(ver + 1).size() - 1 >= hor + 1)
                         if(field.get(ver + 1).get(hor + 1))
                         {
                             field.get(ver + 1).set(hor + 1, false);
@@ -131,7 +131,7 @@ public class GameStepService
                         }
                     break;
                 case "south":
-                    if(ver < field.size() - 1)
+                    if(ver < field.size() - 1 && field.get(ver + 1).size() - 1 >= hor)
                         if(field.get(ver + 1).get(hor))
                         {
                             field.get(ver + 1).set(hor, false);
@@ -140,7 +140,7 @@ public class GameStepService
                         }
                     break;
                 case "southwest":
-                    if(hor > 0 && ver < field.size() - 1)
+                    if(hor > 0 && ver < field.size() - 1 && field.get(ver + 1).size() - 1 >= hor - 1)
                         if(field.get(ver + 1).get(hor - 1))
                         {
                             field.get(ver + 1).set(hor - 1, false);

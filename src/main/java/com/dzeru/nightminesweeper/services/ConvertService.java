@@ -10,8 +10,8 @@ import java.util.Random;
 public class ConvertService
 {
     //Each char match true or false condition of field's cell
-    private Character[] cipherForFalse = {};
-    private Character[] cipherForTrue = {};
+    private Character[] cipherForFalse = {'4','2','1','5','9',};
+    private Character[] cipherForTrue = {'3','6','7','8',};
 
     public String encryptField(ArrayList<ArrayList<Boolean>> field)
     {
