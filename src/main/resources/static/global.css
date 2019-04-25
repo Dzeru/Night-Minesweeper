@@ -91,3 +91,32 @@ input[type = text]
 {
     border: 1px solid #fff;
 }
+
+.interface-icon
+{
+    width: 8vh;
+    height: 8vh;
+}
+
+#mine
+{
+    width: 16vh;
+    height: 16vh;
+}
+
+#logo
+{
+    font-size: 7vh;
+}
+
+.vpc
+{
+    display: flex;
+    align-items: center;
+}
+
+.vpb
+{
+    display: flex;
+    align-items: flex-end;
+}
