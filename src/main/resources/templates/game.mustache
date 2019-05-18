@@ -21,63 +21,76 @@
             <input type="hidden" name="vertical" value="{{#vertical}}{{vertical}}{{/vertical}}">
             <input type="hidden" name="field" value="{{#field}}{{field}}{{/field}}">
             <input type="hidden" name="flags" value="{{#flags}}{{flags}}{{/flags}}">
-            <div class="col vpc" align="center">
-                <img id="mine" src="/images/mine.svg" alt="Mines: "> <input class="input-count-mines" type="text" readonly name="countOfMines" value="{{#countOfMines}}{{countOfMines}}{{/countOfMines}}">
-            </div>
-            <div class="col vpc" align="center">
+            <div class="col" align="right">
                 <table align="center">
                     <tbody align="center">
                         <tr>
                             <td class="td-square">
+                                {{#nw}}
                                 <button class="bgrd no-border" type="submit" name="step" value="northwest">
                                     <img class="interface-icon" src="/images/northwest-arrow.svg">
                                 </button>
+                                {{/nw}}
                             </td>
                             <td class="td-square">
+                                {{#n}}
                                 <button class="bgrd no-border" type="submit" name="step" value="north">
                                     <img class="interface-icon" src="/images/north-arrow.svg">
                                 </button>
+                                {{/n}}
                             </td>
                             <td class="td-square">
+                                {{#ne}}
                                 <button class="bgrd no-border" type="submit" name="step" value="northeast">
                                     <img class="interface-icon" src="/images/northeast-arrow.svg">
                                 </button>
+                                {{/ne}}
                             </td>
                         </tr>
                         <tr>
                             <td class="td-square">
+                                {{#w}}
                                 <button class="bgrd no-border" type="submit" name="step" value="west">
                                     <img class="interface-icon" src="/images/west-arrow.svg">
                                 </button>
+                                {{/w}}
                             </td>
                             <td class="td-square">{{#i18n}}phrase.steps{{/i18n}}</td>
                             <td class="td-square">
+                                {{#e}}
                                 <button class="bgrd no-border" type="submit" name="step" value="east">
                                     <img class="interface-icon" src="/images/east-arrow.svg">
                                 </button>
+                                {{/e}}
                             </td>
                         </tr>
                         <tr>
                             <td class="td-square">
+                                {{#sw}}
                                 <button class="bgrd no-border" type="submit" name="step" value="southwest">
                                     <img class="interface-icon" src="/images/southwest-arrow.svg">
                                 </button>
+                                {{/sw}}
                             </td>
                             <td class="td-square">
+                                {{#s}}
                                 <button class="bgrd no-border" type="submit" name="step" value="south">
                                     <img class="interface-icon" src="/images/south-arrow.svg">
                                 </button>
+                                {{/s}}
                             </td>
                             <td class="td-square">
+                                {{#se}}
                                 <button class="bgrd no-border" type="submit" name="step" value="southeast">
                                     <img class="interface-icon" src="/images/southeast-arrow.svg">
                                 </button>
+                                {{/se}}
                             </td>
                         </tr>
                     </tbody>
                 </table>
             </div>
-            <div class="col vpc" align="center">
+            <div class="col" align="left">
                 <table align="center">
                     <tbody align="center">
                         <tr>
@@ -87,7 +100,7 @@
                         </tr>
                         <tr>
                             <td class="td-square"><input type="radio" name="flag" value="west"></td>
-                            <td class="td-square">{{#i18n}}phrase.flags{{/i18n}}</td>
+                            <td class="td-square"><img id="mine" src="/images/mine.svg" alt="Mines: "> <input class="input-count-mines" type="text" readonly name="countOfMines" value="{{#countOfMines}}{{countOfMines}}{{/countOfMines}}"></td>
                             <td class="td-square"><input type="radio" name="flag" value="east"></td>
                         </tr>
                         <tr>

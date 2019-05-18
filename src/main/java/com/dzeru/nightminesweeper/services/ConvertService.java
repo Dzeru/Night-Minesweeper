@@ -2,9 +2,7 @@ package com.dzeru.nightminesweeper.services;
 
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Random;
+import java.util.*;
 
 @Service
 public class ConvertService
@@ -101,5 +99,45 @@ public class ConvertService
             }
         }
         return list;
+    }
+
+    public Map<String, Object> getPossibleDirectionsParams(boolean[] possibleDirection)
+    {
+        Map<String, Object> possibleDirectionsParams = new HashMap<>();
+
+        if(possibleDirection[0])
+        {
+            possibleDirectionsParams.put("nw", "nw");
+        }
+        if(possibleDirection[1])
+        {
+            possibleDirectionsParams.put("n", "n");
+        }
+        if(possibleDirection[2])
+        {
+            possibleDirectionsParams.put("ne", "ne");
+        }
+        if(possibleDirection[3])
+        {
+            possibleDirectionsParams.put("w", "w");
+        }
+        if(possibleDirection[5])
+        {
+            possibleDirectionsParams.put("e", "e");
+        }
+        if(possibleDirection[6])
+        {
+            possibleDirectionsParams.put("sw", "sw");
+        }
+        if(possibleDirection[7])
+        {
+            possibleDirectionsParams.put("s", "s");
+        }
+        if(possibleDirection[8])
+        {
+            possibleDirectionsParams.put("se", "se");
+        }
+
+        return possibleDirectionsParams;
     }
 }

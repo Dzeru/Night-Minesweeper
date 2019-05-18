@@ -48,12 +48,12 @@ a, a:hover
 
 .padding-cntr
 {
-    padding: 10% 5% 0% 5%;
+    padding: 5% 5% 0% 5%;
 }
 
 .invitation
 {
-    font-size: 50px;
+    font-size: 8vh;
 }
 
 .invitation-btn
@@ -76,7 +76,7 @@ input[type = text]
 
 .input-count-mines
 {
-    font-size: 35px;
+    font-size: 3vh;
     width: 2em;
     text-align: center;
 }
@@ -100,13 +100,18 @@ input[type = text]
 
 #mine
 {
-    width: 16vh;
-    height: 16vh;
+    width: 3vh;
+    height: 3vh;
 }
 
 #logo
 {
     font-size: 7vh;
+}
+
+#htp
+{
+    line-height: 3.4;
 }
 
 .vpc

@@ -37,6 +37,8 @@ public class GameController
         model.addAttribute("flags", convertService.encryptField(initialGameState.getFlags()));
         model.addAttribute("phrases", initialGameState.getPhrases());
         model.addAttribute("countOfMines", initialGameState.getCountOfMines());
+        model.addAllAttributes(convertService.getPossibleDirectionsParams(initialGameState.getPossibleDirections()));
+
         return "game";
     }
 
@@ -71,6 +73,8 @@ public class GameController
         model.addAttribute("flags", convertService.encryptField(gameState.getFlags()));
         model.addAttribute("phrases", gameState.getPhrases());
         model.addAttribute("countOfMines", gameState.getCountOfMines());
+        model.addAllAttributes(convertService.getPossibleDirectionsParams(gameState.getPossibleDirections()));
+
         return "game";
     }
 

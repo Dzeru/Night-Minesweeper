@@ -14,10 +14,18 @@ public class GameStepService
     @Autowired
     private PhraseService phraseService;
 
-    public GameState gameStep(Locale locale, int horizontal, int vertical, String step, String flag, int countOfMines,
-                              ArrayList<ArrayList<Boolean>> field, ArrayList<ArrayList<Boolean>> flags)
+    public GameState gameStep(Locale locale,
+                              int horizontal, int vertical,
+                              String step, String flag,
+                              int countOfMines,
+                              ArrayList<ArrayList<Boolean>> field,
+                              ArrayList<ArrayList<Boolean>> flags)
     {
-        GameState gm = new GameState();
+        GameState gm;
+        boolean[] possibleDirections = new boolean[9];
+
+        for(int i = 0; i < possibleDirections.length; i++)
+            possibleDirections[i] = true;
 
         int hor = horizontal;
         int ver = vertical;
@@ -71,13 +79,6 @@ public class GameStepService
                     horizontal = horizontal - 1;
                 break;
             default: break;
-        }
-
-        if(field.get(vertical).get(horizontal))
-        {
-            //minesweeper die
-            gm.setCountOfMines(-1);
-            return gm;
         }
 
         //Check marked mines with coordinates BEFORE step
@@ -162,6 +163,14 @@ public class GameStepService
             }
         }
 
+        if(field.get(vertical).get(horizontal))
+        {
+            //minesweeper die
+            gm = new GameState();
+            gm.setCountOfMines(-1);
+            return gm;
+        }
+
         int left = 0;
         int right = 0;
         int top = 0;
@@ -183,21 +192,55 @@ public class GameStepService
             for(int k = horizontal + left; k <= horizontal + right && k < field.get(i).size(); k++)
             {
                 if(field.get(i).get(k))
+                {
+                    //Doesn't allow to block too many possible directions
+                    boolean possibleDirectionsBlock = true;
+
+                    if(i < vertical)
+                    {
+                        possibleDirections[3] = false;
+                        possibleDirections[5] = false;
+                        possibleDirections[6] = false;
+                        possibleDirections[7] = false;
+                        possibleDirections[8] = false;
+                        possibleDirectionsBlock = false;
+                    }
+                    if(i > vertical)
+                    {
+                        possibleDirections[0] = false;
+                        possibleDirections[1] = false;
+                        possibleDirections[2] = false;
+                        possibleDirections[3] = false;
+                        possibleDirections[5] = false;
+                        possibleDirectionsBlock = false;
+                    }
+                    if(k < horizontal && possibleDirectionsBlock)
+                    {
+                        possibleDirections[1] = false;
+                        possibleDirections[2] = false;
+                        possibleDirections[5] = false;
+                        possibleDirections[7] = false;
+                        possibleDirections[8] = false;
+                    }
+                    if(k > horizontal && possibleDirectionsBlock)
+                    {
+                        possibleDirections[0] = false;
+                        possibleDirections[1] = false;
+                        possibleDirections[3] = false;
+                        possibleDirections[6] = false;
+                        possibleDirections[7] = false;
+                    }
+
                     minesNearby++;
+                }
             }
             right = 0;
         }
 
-        ArrayList<String> phrases = phraseService.createPhrases(field, minesNearby, horizontal, vertical, locale);
+        ArrayList<String> phrases = phraseService.createPhrases(field, minesNearby,
+                horizontal, vertical, locale);
 
-        gm.setField(field);
-        gm.setFlags(flags);
-        gm.setCountOfMines(countOfMines);
-        gm.setMinesNearby(minesNearby);
-        gm.setHorizontal(horizontal);
-        gm.setVertical(vertical);
-        gm.setPhrases(phrases);
-
-        return gm;
+        return new GameState(phrases, field, flags, possibleDirections,
+                countOfMines, minesNearby, horizontal, vertical);
     }
 }

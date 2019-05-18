@@ -16,8 +16,6 @@ public class StartGameService
 
     public GameState start(Locale locale)
     {
-        GameState initialGameState = new GameState();
-
         Random random = new Random();
 
         int countOfMines = random.nextInt(10) + 15;
@@ -59,15 +57,12 @@ public class StartGameService
         }
 
         ArrayList<String> phrases = phraseService.createPhrases(field, 0, 0, 0, locale);
+        boolean possibleDirections[] = new boolean[9];
 
-        initialGameState.setCountOfMines(countOfMines);
-        initialGameState.setField(field);
-        initialGameState.setFlags(flags);
-        initialGameState.setPhrases(phrases);
-        initialGameState.setHorizontal(0);
-        initialGameState.setVertical(0);
-        initialGameState.setMinesNearby(0);
+        for(int i = 0; i < possibleDirections.length; i++)
+            possibleDirections[i] = true;
 
-        return initialGameState;
+        return new GameState(phrases, field, flags, possibleDirections,
+                countOfMines, 0, 0, 0);
     }
 }
